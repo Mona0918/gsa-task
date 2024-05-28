@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <button><a href="{% url 'assign-task' request.user.username %}">Add task</a></button>
+    <br><br>
+    <button><a href="{% url 'logout' %}">Logout</a></button>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr">
+        <div>Task Name: {{task.task_name}}</div>
+        <div>Date:{{task.date}}</div>
+        <div>Time: {{task.time}}</div>
+        <div>Assigned By</div>
+        <div>Status</div>
+    </div>
+    <br><hr><br>
+    {% for task in tasks %}
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr">
+        <div>{{task.task_name}}</div>
+        <div>{{task.date}}</div>
+        <div>{{task.time}}</div>
+        <div>{{task.assigned_by}}</div>
+        <div></div>
+    </div>
+    <br><hr><br>
+    {% endfor %}
+</body>
+</html>
